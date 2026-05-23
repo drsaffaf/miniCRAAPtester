@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +14,6 @@
 <div class="main-container">
 
 <!-- TITLE OF PAGE-->
-
 <h1>CRAAP Tester</h1>
 
 <!-- YOUR TOPIC -->
@@ -34,17 +32,19 @@
 
   <div class="row">
     <label>Field of Research</label>
-<option>Select Field</option>
-<option>Health & Medical Sciences</option>
-<option>Physical Sciences (Physics, Chemistry)</option>
-<option>Engineering & Technology (Computer Science)</option>
-<option>Social Sciences (Psychology, Economics, Political Science, Anthropology)</option>
-<option>Humanities (History, Philosophy, Literature, Religion)</option>
-<option>Other</option>
+    <select>
+      <option>Select Field</option>
+      <option>Health & Medical Sciences</option>
+      <option>Physical Sciences (Physics, Chemistry)</option>
+      <option>Engineering & Technology (Computer Science)</option>
+      <option>Social Sciences (Psychology, Economics, Political Science, Anthropology)</option>
+      <option>Humanities (History, Philosophy, Literature, Religion)</option>
+      <option>Other</option>
+    </select>
   </div>
 </div>
 
-<!-- YOUR ARICLE -->
+<!-- YOUR ARTICLE -->
 <div class="container">
   <h2>Article</h2>
 
@@ -56,59 +56,51 @@
     </label>
   </div>
 
-    <div class="row">
-      <label for="authority">Purpose</label>
-<select id="authority" name="authority" required>
-  <option value="" disabled selected>Select Purpose of Article</option>
-  <option value="1">Inform</option>
-  <option value="2">Persuade</option>
-  <option value="3">Entertain </option>
-  <option value="4">Profit / Status</option>
-</select>
+  <div class="row">
+    <label for="purpose">Purpose</label>
+    <select id="purpose" name="purpose" required>
+      <option value="" disabled selected>Select Purpose of Article</option>
+      <option value="1">Inform</option>
+      <option value="2">Persuade</option>
+      <option value="3">Entertain</option>
+      <option value="4">Profit / Status</option>
+    </select>
   </div>
-  
-
-  
 </div>
 
-  <!-- PUBLISHER -->
+<!-- PUBLISHER -->
 <div class="container">
   <h2>Publisher</h2>
-  <div class="row">
-  <label>Publication Type</label>
-  <select>
-  <option>Select Publication Type</option>
-<option>Scholarly Journals</option>
-<option>Academic & Research Sources (Conferences, White Papers)</option>
-<option>Government Publications</option>
-<option>News & Journalism (Newspapers, Magazines, Investigative, Financial)</option>
-<option>Documentary</option>
-<option>Corporate & Marketing Content (Branded Media, Ads)</option>
-<option>Online & User-Generated Content (Blogs, Social Media, Podcasts)</option>
-<option>Other (not listed)</option>
-</select>
-  </div>
-
 
   <div class="row">
-  <label>Field of Publication</label>
-  <div class="row">
-  <select>
-<option>Select Field</option>
-<option>Health & Medical Sciences</option>
-<option>Physical Sciences (Physics, Chemistry)</option>
-<option>Engineering & Technology (Computer Science)</option>
-<option>Social Sciences (Psychology, Economics, Political Science, Anthropology)</option>
-<option>Humanities (History, Philosophy, Literature, Religion)</option>
-<option>Other</option>
+    <label>Publication Type</label>
+    <select>
+      <option>Select Publication Type</option>
+      <option>Scholarly Journals</option>
+      <option>Academic & Research Sources (Conferences, White Papers)</option>
+      <option>Government Publications</option>
+      <option>News & Journalism (Newspapers, Magazines, Investigative, Financial)</option>
+      <option>Documentary</option>
+      <option>Corporate & Marketing Content (Branded Media, Ads)</option>
+      <option>Online & User-Generated Content (Blogs, Social Media, Podcasts)</option>
+      <option>Other (not listed)</option>
+    </select>
   </div>
-  </select>
 
-  
+  <div class="row">
+    <label>Field of Publication</label>
+    <select>
+      <option>Select Field</option>
+      <option>Health & Medical Sciences</option>
+      <option>Physical Sciences (Physics, Chemistry)</option>
+      <option>Engineering & Technology (Computer Science)</option>
+      <option>Social Sciences (Psychology, Economics, Political Science, Anthropology)</option>
+      <option>Humanities (History, Philosophy, Literature, Religion)</option>
+      <option>Other</option>
+    </select>
   </div>
-  
+
 </div>
-
 
 <!-- AUTHORS -->
 <div class="container">
@@ -118,12 +110,12 @@
 
   <div class="row author-buttons">
     <label style="visibility:hidden;">x</label>
-    <button onclick="addAuthor()">Add Author</button>
-    <button onclick="removeAuthor()">Remove Author</button>
+    <button type="button" onclick="addAuthor()">Add Author</button>
+    <button type="button" onclick="removeAuthor()">Remove Author</button>
   </div>
 </div>
 
-  <!-- FULL TEXT -->
+<!-- FULL TEXT -->
 <div class="container">
   <h2>Full Article Text</h2> 
   <div class="row full">
@@ -140,31 +132,40 @@ let authorCount = 0;
 function fieldDropdown() {
   return `
   <select>
-<option>Select Field</option>
-<option>Health & Medical Sciences</option>
-<option>Physical Sciences (Physics, Chemistry)</option>
-<option>Engineering & Technology (Computer Science)</option>
-<option>Social Sciences (Psychology, Economics, Political Science, Anthropology)</option>
-<option>Humanities (History, Philosophy, Literature, Religion)</option>
-<option>Other</option>
-  </div>
+    <option>Select Field</option>
+    <option>Health & Medical Sciences</option>
+    <option>Physical Sciences (Physics, Chemistry)</option>
+    <option>Engineering & Technology (Computer Science)</option>
+    <option>Social Sciences (Psychology, Economics, Political Science, Anthropology)</option>
+    <option>Humanities (History, Philosophy, Literature, Religion)</option>
+    <option>Other</option>
   </select>
   `;
 }
 
 function degreeDropdown() {
   return `
-    <select>
-      <option>Highest Degree Earned</option>
-      <option>PhD</option>
-      <option>Masters</option>
-      <option>Bachelors</option>
-      <option>High School</option>
-      <option>No degree listed</option>
-    </select>
+  <select>
+    <option>Highest Degree Earned</option>
+    <option>PhD</option>
+    <option>Masters</option>
+    <option>Bachelors</option>
+    <option>High School</option>
+    <option>No degree listed</option>
+  </select>
   `;
 }
 
+function validationDropdown() {
+  return `
+  <select>
+    <option>Are credentials verifiable?</option>
+    <option>Yes</option>
+    <option>No</option>
+    <option>Unclear</option>
+  </select>
+  `;
+}
 
 function addAuthor() {
   authorCount++;
