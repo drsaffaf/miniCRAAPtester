@@ -42,65 +42,67 @@
   </div>
 </div>
 
-<div class="container">
+
+  <div class="container">
   <h2>Article</h2>
 
+  <!-- ROW 1 -->
   <div class="row">
-    <label>Publication Date</label>
-    <input type="date" id="pubDate">
-    <label>
-      <input type="checkbox" onclick="toggleDate()"> No date
-    </label>
+    <div class="column">
+      <label>Publication Date</label>
+      <input type="date" id="pubDate">
+      <label>
+        <input type="checkbox" onclick="toggleDate()"> No date
+      </label>
+    </div>
   </div>
 
-<div class="row">
-  <label>Purpose (select all that apply)</label>
-
-  <div class="checkbox-group">
-    <label><input type="checkbox" name="purpose"> Inform</label>
-    <label><input type="checkbox" name="purpose"> Persuade</label>
-    <label><input type="checkbox" name="purpose"> Entertain</label>
-    <label><input type="checkbox" name="purpose"> Profit / Status</label>
-  </div>
-  
+  <!-- ROW 2 -->
   <div class="row">
-    <label>Publication Type</label>
-    <select>
-      <option>Select Type</option>
-      <option>Scholarly Journals</option>
-      <option>Research Sources</option>
-      <option>Government</option>
-      <option>News & Journalism</option>
-      <option>Documentary</option>
-      <option>Corporate / Marketing</option>
-      <option>Online / User Content</option>
-      <option>Other</option>
-    </select>
+    <div class="column">
+      <label>Publication Type</label>
+      <select>
+        <option>Select Type</option>
+        <option>Scholarly Journals</option>
+        <option>Research Sources</option>
+        <option>Government</option>
+        <option>News & Journalism</option>
+        <option>Documentary</option>
+        <option>Corporate / Marketing</option>
+        <option>Online / User Content</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="column">
+      <label>Field of Publication</label>
+      <select>
+        <option>Select Field</option>
+        <option>Health</option>
+        <option>Sciences</option>
+        <option>Technology</option>
+        <option>Social Sciences</option>
+        <option>Humanities</option>
+        <option>Other</option>
+      </select>
+    </div>
   </div>
 
+  <!-- ROW 3 -->
   <div class="row">
-    <label>Field of Publication</label>
-    <select>
-      <option>Select Field</option>
-      <option>Health</option>
-      <option>Sciences</option>
-      <option>Technology</option>
-      <option>Social Sciences</option>
-      <option>Humanities</option>
-      <option>Other</option>
-    </select>
+    <div class="column full">
+      <label>Purpose (select all that apply)</label>
+
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="purpose"> Inform</label>
+        <label><input type="checkbox" name="purpose"> Persuade</label>
+        <label><input type="checkbox" name="purpose"> Entertain</label>
+        <label><input type="checkbox" name="purpose"> Profit / Status</label>
+      </div>
+    </div>
   </div>
+
 </div>
-
-<div class="container">
-  <h2>Authors</h2>
-
-  <div id="authors"></div>
-
-  <button type="button" onclick="addAuthor()">Add Author</button>
-  <button type="button" onclick="removeAuthor()">Remove Author</button>
-</div>
-
 </div>
 
 <script>
