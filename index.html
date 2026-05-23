@@ -1,195 +1,244 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CRAAP Test Evaluator</title>
+<title>CRAAP Tester</title>
 
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background: #eef3f8;
-  margin: 0;
-  padding: 20px;
-}
+<link rel="stylesheet" href="style.css">
 
-.container {
-  max-width: 800px;
-  margin: auto;
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-h1 {
-  text-align: center;
-  color: #333;
-}
-
-.section {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 15px;
-  background: #fafafa;
-}
-
-.section h3 {
-  margin: 0 0 5px;
-  color: #0078d4;
-}
-
-.section p {
-  margin: 5px 0 10px;
-  font-size: 14px;
-  color: #555;
-}
-
-select {
-  width: 100%;
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-button {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border: none;
-  background: #0078d4;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #005fa3;
-}
-
-.result {
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 8px;
-  background: #f1f6fb;
-  font-weight: bold;
-}
-
-textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  margin-bottom: 15px;
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Exo+2:wght@500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+<div class="main-container">
+
+<!-- TITLE OF PAGE-->
+
+<h1>CRAAP Tester</h1>
+
+<!-- YOUR TOPIC -->
 <div class="container">
-  <h1>CRAAP Test Evaluator</h1>
+  <h2>Your Topic</h2>
 
-  <label><strong>Your Research Question:</strong></label>
-  <textarea placeholder="Type your research question here..."></textarea>
-
-  <label><strong>Source URL (optional):</strong></label>
-  <textarea placeholder="Paste the link to your source here..."></textarea>
-
-  <p><strong>Rate each category:</strong></p>
-
-  <div class="section">
-    <h3>Currency</h3>
-    <p><strong>Key Question:</strong> Is it up to date?<br>Recent information is more useful, especially in fast-changing areas.</p>
-    <select id="currency">
-      <option value="0">Select rating</option>
-      <option value="1">1 - Very outdated</option>
-      <option value="2">2 - Somewhat outdated</option>
-      <option value="3">3 - Acceptable</option>
-      <option value="4">4 - Mostly current</option>
-      <option value="5">5 - Very current</option>
-    </select>
+  <div class="row">
+    <label>Keywords</label>
+    <input type="text">
   </div>
 
-  <div class="section">
-    <h3>Relevance</h3>
-    <p><strong>Key Question:</strong> Does it apply to my decision?<br>Evidence must directly address your specific question.</p>
-    <select id="relevance">
-      <option value="0">Select rating</option>
-      <option value="1">1 - Not relevant</option>
-      <option value="2">2 - Slightly relevant</option>
-      <option value="3">3 - Moderately relevant</option>
-      <option value="4">4 - Mostly relevant</option>
-      <option value="5">5 - Highly relevant</option>
-    </select>
+  <div class="row">
+    <label>Keyword Synonyms</label>
+    <input type="text">
   </div>
 
-  <div class="section">
-    <h3>Authority</h3>
-    <p><strong>Key Question:</strong> Who created it?<br>Sources should have proper expertise or credentials.</p>
-    <select id="authority">
-      <option value="0">Select rating</option>
-      <option value="1">1 - No authority</option>
-      <option value="2">2 - Limited authority</option>
-      <option value="3">3 - Some authority</option>
-      <option value="4">4 - Credible authority</option>
-      <option value="5">5 - Highly authoritative</option>
+  <div class="row">
+    <label>Field</label>
+    <select>
+      <option>Medical & Health Sciences</option>
+      <option>Physics</option>
+      <option>Engineering</option>
+      <option>Computer Science</option>
+      <option>Psychology</option>
+      <option>Anthropology</option>
+      <option>Economics</option>
+      <option>Political Science</option>
+      <option>History, Philosophy, Literature, or Religious Writings</option>
     </select>
   </div>
+</div>
 
-  <div class="section">
-    <h3>Accuracy</h3>
-    <p><strong>Key Question:</strong> Is it reliable?<br>Information should be supported by evidence and consistent across sources.</p>
-    <select id="accuracy">
-      <option value="0">Select rating</option>
-      <option value="1">1 - Not reliable</option>
-      <option value="2">2 - Questionable</option>
-      <option value="3">3 - Somewhat reliable</option>
-      <option value="4">4 - Reliable</option>
-      <option value="5">5 - Highly reliable</option>
-    </select>
+<!-- YOUR ARICLE -->
+<div class="container">
+  <h2>Article</h2>
+
+  <div class="row">
+    <label>Full Title</label>
+    <input type="text">
   </div>
 
-  <div class="section">
-    <h3>Purpose</h3>
-    <p><strong>Key Question:</strong> Why was it created?<br>Be aware of bias, intent, and possible agendas.</p>
-    <select id="purpose">
-      <option value="0">Select rating</option>
-      <option value="1">1 - Strong bias</option>
-      <option value="2">2 - Some bias</option>
-      <option value="3">3 - Neutral</option>
-      <option value="4">4 - Mostly objective</option>
-      <option value="5">5 - Completely objective</option>
-    </select>
+  <div class="row date-row">
+    <label>Publication Date</label>
+    <input type="date" id="pubDate">
+    <label class="checkbox-label">
+      <input type="checkbox" onclick="toggleDate()"> No date provided
+    </label>
   </div>
 
-  <button onclick="calculateScore()">Evaluate Source</button>
+    <div class="row">
+      <label for="authority">Purpose</label>
+<select id="authority" name="authority" required>
+  <option value="" disabled selected>Select Purpose of Article</option>
+  <option value="1">Inform (scientific papers, news reporting, textbooks, manuals, public records) </option>
+  <option value="2">Persuade (political ads, advocacy campaigns, opinion editorials, marketing)</option>
+  <option value="3">Entertain (movies, novels, music, comedy shows)</option>
+  <option value="4">Profit / Status (influencer content, branded media)</option>
+</select>
+  </div>
+  
 
-  <div class="result" id="result"></div>
+  
+</div>
+
+  <!-- PUBLISHER -->
+<div class="container">
+  <h2>Publisher</h2>
+  <div class="row">
+  <label>Publisher Name</label>
+  <input type="text" class="publisher-input">
+  </div>
+
+  <div class="row">
+  <label>Publication Type</label>
+  <select>
+  <option>Select Publication Type</option>
+
+    <option>Scholarly Journals (e.g., Nature, Science, The Lancet)</option>
+    <option>Conference Materials (talks, posters, slide decks)</option>
+    <option>Government Publications (e.g., U.S. Census Bureau, CDC datasets)</option>
+    <option>Intergovernmental Organizations (e.g., UN, World Bank, IMF)</option>
+    <option>Court and Legal Records (e.g., Supreme Court opinions, PACER documents)</option>
+    <option>Legacy News Organizations (e.g., BBC, Reuters, Associated Press)</option>
+    <option>Newspapers (e.g., The Guardian, WSJ, USA Today)</option>
+    <option>Magazines (e.g., Time, National Geographic, The Atlantic)</option>
+    <option>Financial Media (e.g., Bloomberg, Dow Jones)</option>
+    <option>Investigative Journalism (e.g., ProPublica, The Markup)</option>
+    <option>Documentary (e.g., BBC Panorama, Netflix documentaries)</option>
+    <option>Corporate / Branded Media (e.g., company blogs, press releases)</option>
+    <option>Marketing/ Advertisement (e.g., sponsored posts, commercials, digital ads)</option>
+    <option>White Papers / Research Reports (e.g., consulting firm publications)</option>
+    <option>User-Generated Platforms (e.g., Reddit, TikTok, X posts)</option>
+    <option>Blogs and Digital Media Publications (e.g., Medium, Substack)</option>
+    <option>Podcast (e.g., YouTube, Spotify)</option>
+    <option>Other (not listed)</option>
+</select>
+  </div>
+
+  <div class="row">
+  <label>Field of Publication</label>
+  <select>
+    <option>Select Field of Publication</option>
+      <option>Medical & Health Sciences</option>
+      <option>Physics</option>
+      <option>Engineering</option>
+      <option>Computer Science</option>
+      <option>Psychology</option>
+      <option>Anthropology</option>
+      <option>Economics</option>
+      <option>Political Science</option>
+      <option>History, Philosophy, Literature, or Religious Writings</option>
+  </select>
+
+  
+  </div>
+  
+</div>
+
+
+<!-- AUTHORS -->
+<div class="container">
+  <h2>Authors</h2>
+
+  <div id="authors"></div>
+
+  <div class="row author-buttons">
+    <label style="visibility:hidden;">x</label>
+    <button onclick="addAuthor()">Add Author</button>
+    <button onclick="removeAuthor()">Remove Author</button>
+  </div>
+</div>
+
+  <!-- FULL TEXT -->
+<div class="container">
+  <h2>Full Article Text</h2> 
+  <div class="row full">
+    <label>Full Article Text</label>
+    <textarea></textarea>
+  </div>
+</div>
+
 </div>
 
 <script>
-function calculateScore() {
-  let currency = +document.getElementById('currency').value;
-  let relevance = +document.getElementById('relevance').value;
-  let authority = +document.getElementById('authority').value;
-  let accuracy = +document.getElementById('accuracy').value;
-  let purpose = +document.getElementById('purpose').value;
+let authorCount = 0;
 
-  let total = currency + relevance + authority + accuracy + purpose;
-  let message = '';
-
-  if (total >= 20) {
-    message = '✅ Strong source: This source is highly reliable and matches your research question well.';
-  } else if (total >= 15) {
-    message = '⚠️ Decent source: This source could be useful but should be verified or supplemented.';
-  } else {
-    message = '❌ Weak source: This source may not be suitable for your research question.';
-  }
-
-  document.getElementById('result').innerText = 'Total Score: ' + total + '/25\n' + message;
+function fieldDropdown() {
+  return `
+    <select>
+      <option>Field of Degree</option>
+      <optgroup label="STEM Fields">
+        <option>Medical & Health Sciences</option>
+        <option>Physics</option>
+        <option>Engineering</option>
+        <option>Computer Science</option>
+      </optgroup>
+      <optgroup label="Social Sciences">
+        <option>Psychology</option>
+        <option>Anthropology</option>
+        <option>Economics</option>
+        <option>Political Science</option>
+      </optgroup>
+      <optgroup label="Humanities">
+        <option>History, Philosophy, Literature, or Religious Writings</option>
+      </optgroup>
+    </select>
+  `;
 }
+
+function degreeDropdown() {
+  return `
+    <select>
+      <option>Highest Degree Earned</option>
+      <option>PhD</option>
+      <option>Masters</option>
+      <option>Bachelors</option>
+      <option>High School</option>
+      <option>No degree listed</option>
+    </select>
+  `;
+}
+
+function validationDropdown() {
+  return `
+    <select>
+      <option>Validation</option>
+      <option>Degree validated at .edu/.gov</option>
+      <option>Degree not validated</option>
+    </select>
+  `;
+}
+
+function addAuthor() {
+  authorCount++;
+
+  const div = document.createElement('div');
+  div.className = 'author-row';
+
+  div.innerHTML = `
+    <label>Author ${authorCount}</label>
+    <input type="text" placeholder="Name">
+    ${degreeDropdown()}
+    ${fieldDropdown()}
+    ${validationDropdown()}
+  `;
+
+  document.getElementById('authors').appendChild(div);
+}
+
+function removeAuthor() {
+  const container = document.getElementById('authors');
+  if (container.children.length > 0) {
+    container.removeChild(container.lastChild);
+    authorCount--;
+  }
+}
+
+function toggleDate() {
+  const dateInput = document.getElementById('pubDate');
+  dateInput.disabled = !dateInput.disabled;
+}
+
+addAuthor();
 </script>
 
 </body>
