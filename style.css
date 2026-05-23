@@ -183,10 +183,11 @@ button:hover {
   align-items: center;
 }
 
+
 .date-row input[type="date"] {
-  justify-self: start;
-  width: 100%;
+  width: auto;
   max-width: 180px;
+  justify-self: start;
 }
 
 .checkbox-label {
