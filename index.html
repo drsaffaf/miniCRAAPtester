@@ -346,16 +346,49 @@ function runCRAAP() {
 
   /* ========= OUTPUT ========= */
 
-  document.getElementById("results").innerHTML = `
-    <p><strong>Currency:</strong> ${currency}/5</p>
-    <p><strong>Relevance:</strong> ${relevance}/5</p>
-    <p><strong>Authority:</strong> ${authority}/5</p>
-    <p><strong>Purpose:</strong> ${purpose}/5</p>
-    <p><strong>Accuracy:</strong> ${accuracy}/5</p>
-    <hr>
-    <h3>Total Score: ${total} / 25</h3>
-    <p>${message}</p>
-  `;
-}
+/* ========= OUTPUT ========= */
+
+document.getElementById("results").innerHTML = `
+
+  <h3>🔍 Detailed CRAAP Breakdown</h3>
+
+  <p><strong>Currency: ${currency}/5</strong><br>
+  Based on your selected field (<em>${topicField}</em>), this topic typically requires 
+  ${currency === 5 ? "very recent information" : currency === 4 ? "fairly recent information" : "moderately recent information"}.
+  </p>
+
+  <p><strong>Relevance: ${relevance}/5</strong><br>
+  Found <strong>${matchCount}</strong> keyword matches in the text.<br>
+  Keywords used: ${allTerms.join(', ') || "None provided"}.
+  </p>
+
+  <p><strong>Authority: ${authority}/5</strong><br>
+  Evaluated ${authorRows.length} author(s).<br>
+  Points were added based on:
+  <ul>
+    <li>Matching field with source</li>
+    <li>Highest degree level</li>
+    <li>Relevance of expertise</li>
+  </ul>
+  </p>
+
+  <p><strong>Purpose: ${purpose}/5</strong><br>
+  ${checks.length} potential bias indicator(s) selected.<br>
+  Each reduces objectivity (advertising, emotional language, etc.).
+  </p>
+
+  <p><strong>Accuracy: ${accuracy}/5</strong><br>
+  Evidence selected: <em>${evidence}</em>.<br>
+  More citations = higher accuracy score.
+  </p>
+
+  <hr>
+
+  <h3>Total Score: ${total} / 25</h3>
+  <p><strong>${message}</strong></p>
+
+  <p><em>This score combines Currency, Relevance, Authority, Purpose, and Accuracy to evaluate the credibility of the source.</em></p>
+
+`;
 
 </script>
