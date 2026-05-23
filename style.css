@@ -109,14 +109,21 @@ select {
 
   padding: 10px 35px 10px 10px;
 
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='white'%3E%3Cpath d='M5 7l5 6 5-6H5z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 10px center;
   background-size: 14px;
 }
 
-select:hover {
-  border-color: var(--accent);
+/* dropdown menu items */
+select option {
+  background-color: white;
+  color: black;
 }
 
 /* ✅ CHECKBOX GROUP (FIXED + CLEAN) */
