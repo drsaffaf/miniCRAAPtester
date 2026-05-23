@@ -115,12 +115,14 @@
 </div>
   
 <!-- AUTHORS -->
+<div class="container">
+  <h2>Authors</h2>
+
   <div id="authors"></div>
 
-  <div class="row author-buttons">
-    <label style="visibility:hidden;">x</label>
-    <button onclick="addAuthor()">Add Author</button>
-    <button onclick="removeAuthor()">Remove Author</button>
+  <div class="author-buttons">
+    <button type="button" onclick="addAuthor()">Add Author</button>
+    <button type="button" onclick="removeAuthor()">Remove Author</button>
   </div>
 </div>
   
@@ -133,3 +135,66 @@
 </div>
 
 </div>
+
+let authorCount = 0;
+
+/* DEGREE DROPDOWN */
+function degreeDropdown() {
+  return `
+    <select>
+      <option>Highest Degree</option>
+      <option>PhD</option>
+      <option>Masters</option>
+      <option>Bachelors</option>
+      <option>High School</option>
+      <option>No degree listed</option>
+    </select>
+  `;
+}
+
+/* FIELD DROPDOWN */
+function fieldSelect() {
+  return `
+    <select>
+      <option>Select Field</option>
+      <option>Health & Medical Sciences</option>
+      <option>Physical Sciences</option>
+      <option>Engineering & Technology</option>
+      <option>Social Sciences</option>
+      <option>Humanities</option>
+      <option>Other</option>
+    </select>
+  `;
+}
+
+<script>
+/* ADD AUTHOR */
+function addAuthor() {
+  authorCount++;
+
+  const div = document.createElement('div');
+  div.className = 'author-row';
+
+  div.innerHTML = `
+    <label>Author ${authorCount}</label>
+    <input type="text" placeholder="Name">
+    ${degreeDropdown()}
+    ${fieldSelect()}
+  `;
+
+  document.getElementById('authors').appendChild(div);
+}
+
+/* REMOVE AUTHOR */
+function removeAuthor() {
+  const container = document.getElementById('authors');
+  if (container.children.length > 0) {
+    container.removeChild(container.lastChild);
+    authorCount--;
+  }
+}
+
+/* START WITH ONE AUTHOR */
+addAuthor();
+
+</script>
