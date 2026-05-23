@@ -106,11 +106,11 @@
 <div class="row full">
   <label>Select all that apply:</label>
   <div class="checkbox-group">
-    <label><input type="checkbox"> Advertising present</label>
-    <label><input type="checkbox"> Sponsored content</label>
-    <label><input type="checkbox"> Promotes a product or agenda</label>
-    <label><input type="checkbox"> Emotional or persuasive language</label>
-    <label><input type="checkbox"> One-sided argument</label>
+    <label><input type="checkbox"> Advertising present within source or on the source's website</label>
+    <label><input type="checkbox"> The source is sponsored</label>
+    <label><input type="checkbox"> The source promotes a product or agenda</label>
+    <label><input type="checkbox"> The source uses emotional or persuasive language</label>
+    <label><input type="checkbox"> The source presents a one-sided argument</label>
   </div>
 </div>
   
@@ -158,13 +158,14 @@ function degreeDropdown() {
 function fieldSelect() {
   return `
     <select>
-      <option>Select Field</option>
+      <option>Field of Degree</option>
       <option>Health & Medical Sciences</option>
       <option>Physical Sciences</option>
       <option>Engineering & Technology</option>
       <option>Social Sciences</option>
       <option>Humanities</option>
       <option>Other</option>
+      <option>Unknown</option>
     </select>
   `;
 }
