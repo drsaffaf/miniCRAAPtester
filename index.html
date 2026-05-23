@@ -13,10 +13,8 @@
 
 <div class="main-container">
 
-<!-- TITLE OF PAGE-->
 <h1>CRAAP Tester</h1>
 
-<!-- YOUR TOPIC -->
 <div class="container">
   <h2>Your Topic</h2>
 
@@ -35,55 +33,53 @@
     <select>
       <option>Select Field</option>
       <option>Health & Medical Sciences</option>
-      <option>Physical Sciences (Physics, Chemistry)</option>
-      <option>Engineering & Technology (Computer Science)</option>
-      <option>Social Sciences (Psychology, Economics, Political Science, Anthropology)</option>
-      <option>Humanities (History, Philosophy, Literature, Religion)</option>
+      <option>Physical Sciences</option>
+      <option>Engineering & Technology</option>
+      <option>Social Sciences</option>
+      <option>Humanities</option>
       <option>Other</option>
     </select>
   </div>
 </div>
 
-<!-- YOUR ARTICLE -->
 <div class="container">
   <h2>Article</h2>
 
-  <div class="row date-row">
+  <div class="row">
     <label>Publication Date</label>
     <input type="date" id="pubDate">
-    <label class="checkbox-label">
-      <input type="checkbox" onclick="toggleDate()"> No date provided
+    <label>
+      <input type="checkbox" onclick="toggleDate()"> No date
     </label>
   </div>
 
   <div class="row">
-    <label for="purpose">Purpose</label>
-    <select id="purpose" name="purpose" required>
-      <option value="" disabled selected>Select Purpose of Article</option>
-      <option value="1">Inform</option>
-      <option value="2">Persuade</option>
-      <option value="3">Entertain</option>
-      <option value="4">Profit / Status</option>
+    <label>Purpose</label>
+    <select>
+      <option>Select Purpose</option>
+      <option>Inform</option>
+      <option>Persuade</option>
+      <option>Entertain</option>
+      <option>Profit</option>
     </select>
   </div>
 </div>
 
-<!-- PUBLISHER -->
 <div class="container">
   <h2>Publisher</h2>
 
   <div class="row">
     <label>Publication Type</label>
     <select>
-      <option>Select Publication Type</option>
+      <option>Select Type</option>
       <option>Scholarly Journals</option>
-      <option>Academic & Research Sources (Conferences, White Papers)</option>
-      <option>Government Publications</option>
-      <option>News & Journalism (Newspapers, Magazines, Investigative, Financial)</option>
+      <option>Research Sources</option>
+      <option>Government</option>
+      <option>News & Journalism</option>
       <option>Documentary</option>
-      <option>Corporate & Marketing Content (Branded Media, Ads)</option>
-      <option>Online & User-Generated Content (Blogs, Social Media, Podcasts)</option>
-      <option>Other (not listed)</option>
+      <option>Corporate / Marketing</option>
+      <option>Online / User Content</option>
+      <option>Other</option>
     </select>
   </div>
 
@@ -91,37 +87,23 @@
     <label>Field of Publication</label>
     <select>
       <option>Select Field</option>
-      <option>Health & Medical Sciences</option>
-      <option>Physical Sciences (Physics, Chemistry)</option>
-      <option>Engineering & Technology (Computer Science)</option>
-      <option>Social Sciences (Psychology, Economics, Political Science, Anthropology)</option>
-      <option>Humanities (History, Philosophy, Literature, Religion)</option>
+      <option>Health</option>
+      <option>Sciences</option>
+      <option>Technology</option>
+      <option>Social Sciences</option>
+      <option>Humanities</option>
       <option>Other</option>
     </select>
   </div>
-
 </div>
 
-<!-- AUTHORS -->
 <div class="container">
   <h2>Authors</h2>
 
   <div id="authors"></div>
 
-  <div class="row author-buttons">
-    <label style="visibility:hidden;">x</label>
-    <button type="button" onclick="addAuthor()">Add Author</button>
-    <button type="button" onclick="removeAuthor()">Remove Author</button>
-  </div>
-</div>
-
-<!-- FULL TEXT -->
-<div class="container">
-  <h2>Full Article Text</h2> 
-  <div class="row full">
-    <label>Full Article Text</label>
-    <textarea></textarea>
-  </div>
+  <button type="button" onclick="addAuthor()">Add Author</button>
+  <button type="button" onclick="removeAuthor()">Remove Author</button>
 </div>
 
 </div>
@@ -129,56 +111,14 @@
 <script>
 let authorCount = 0;
 
-function fieldDropdown() {
-  return `
-  <select>
-    <option>Select Field</option>
-    <option>Health & Medical Sciences</option>
-    <option>Physical Sciences (Physics, Chemistry)</option>
-    <option>Engineering & Technology (Computer Science)</option>
-    <option>Social Sciences (Psychology, Economics, Political Science, Anthropology)</option>
-    <option>Humanities (History, Philosophy, Literature, Religion)</option>
-    <option>Other</option>
-  </select>
-  `;
-}
-
-function degreeDropdown() {
-  return `
-  <select>
-    <option>Highest Degree Earned</option>
-    <option>PhD</option>
-    <option>Masters</option>
-    <option>Bachelors</option>
-    <option>High School</option>
-    <option>No degree listed</option>
-  </select>
-  `;
-}
-
-function validationDropdown() {
-  return `
-  <select>
-    <option>Are credentials verifiable?</option>
-    <option>Yes</option>
-    <option>No</option>
-    <option>Unclear</option>
-  </select>
-  `;
-}
-
 function addAuthor() {
   authorCount++;
 
   const div = document.createElement('div');
-  div.className = 'author-row';
 
   div.innerHTML = `
     <label>Author ${authorCount}</label>
     <input type="text" placeholder="Name">
-    ${degreeDropdown()}
-    ${fieldDropdown()}
-    ${validationDropdown()}
   `;
 
   document.getElementById('authors').appendChild(div);
@@ -188,7 +128,6 @@ function removeAuthor() {
   const container = document.getElementById('authors');
   if (container.children.length > 0) {
     container.removeChild(container.lastChild);
-    authorCount--;
   }
 }
 
