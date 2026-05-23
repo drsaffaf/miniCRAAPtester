@@ -163,27 +163,9 @@ option {
   color: var(--text);
 }
 
-.date-row {
-  grid-template-columns: 180px 180px auto;
-}
-
-.row {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 15px;
-}
-
-.column {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.column.full {
-  width: 100%;
-}
 
 .checkbox-group {
-  padding-left: 10px;
-  border-left: 2px solid rgba(148,163,184,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
