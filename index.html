@@ -49,11 +49,6 @@
 <div class="container">
   <h2>Article</h2>
 
-  <div class="row">
-    <label>Full Title</label>
-    <input type="text">
-  </div>
-
   <div class="row date-row">
     <label>Publication Date</label>
     <input type="date" id="pubDate">
@@ -62,23 +57,6 @@
     </label>
   </div>
 
-    <div class="row">
-      <label for="authority">Quality check:</label>
-<label>Check for any of the following:</label>
-<label><input type="checkbox"> Advertising present</label>
-<label><input type="checkbox"> Sponsored content</label>
-<label><input type="checkbox"> Promotes a product or agenda</label>
-<label><input type="checkbox"> Emotional or persuasive language</label>
-<label><input type="checkbox"> One-sided argument</label>
-  </div>
-  
-
-  
-</div>
-
-  <!-- PUBLISHER -->
-<div class="container">
-  <h2>Publisher</h2>
   <div class="row">
   <label>Publisher Name</label>
   <input type="text" class="publisher-input">
@@ -115,15 +93,17 @@
 </div>
 
   
+    <div class="row">
+      <label for="authority">Quality check:</label>
+<label>Check for any of the following:</label>
+<label><input type="checkbox"> Advertising present</label>
+<label><input type="checkbox"> Sponsored content</label>
+<label><input type="checkbox"> Promotes a product or agenda</label>
+<label><input type="checkbox"> Emotional or persuasive language</label>
+<label><input type="checkbox"> One-sided argument</label>
   </div>
-  
-</div>
-
 
 <!-- AUTHORS -->
-<div class="container">
-  <h2>Authors</h2>
-
   <div id="authors"></div>
 
   <div class="row author-buttons">
@@ -132,12 +112,11 @@
     <button onclick="removeAuthor()">Remove Author</button>
   </div>
 </div>
-
+  
   <!-- FULL TEXT -->
 <div class="container">
   <h2>Full Article Text</h2> 
   <div class="row full">
-    <label>Full Article Text</label>
     <textarea></textarea>
   </div>
 </div>
