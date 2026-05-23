@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRAAP Test Evaluator</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #f4f4f4;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  background: #0078d4;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.result {
+  margin-top: 20px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>CRAAP Test Evaluator</h2>
+  <p>Rate each category from 1 (poor) to 5 (excellent).</p>
+
+  <div class="question">
+    <label>Currency - Is it up to date?</label><br>
+    <input type="number" min="1" max="5" id="currency">
+  </div>
+
+  <div class="question">
+    <label>Relevance - Does it apply to my decision?</label><br>
+    <input type="number" min="1" max="5" id="relevance">
+  </div>
+
+  <div class="question">
+    <label>Authority - Who created it?</label><br>
+    <input type="number" min="1" max="5" id="authority">
+  </div>
+
+  <div class="question">
+    <label>Accuracy - Is it reliable?</label><br>
+    <input type="number" min="1" max="5" id="accuracy">
+  </div>
+
+  <div class="question">
+    <label>Purpose - Why was it created?</label><br>
+    <input type="number" min="1" max="5" id="purpose">
+  </div>
+
+  <button onclick="calculateScore()">Evaluate Source</button>
+
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+function calculateScore() {
+  let currency = +document.getElementById('currency').value || 0;
+  let relevance = +document.getElementById('relevance').value || 0;
+  let authority = +document.getElementById('authority').value || 0;
+  let accuracy = +document.getElementById('accuracy').value || 0;
+  let purpose = +document.getElementById('purpose').value || 0;
+
+  let total = currency + relevance + authority + accuracy + purpose;
+  let message = '';
+
+  if (total >= 20) {
+    message = '✅ Strong source – highly reliable and relevant.';
+  } else if (total >= 15) {
+    message = '⚠️ Decent source – use with some caution.';
+  } else {
+    message = '❌ Weak source – consider finding a better one.';
+  }
+
+  document.getElementById('result').innerText =
+    'Total Score: ' + total + '/25\n' + message;
+}
+</script>
+
+</body>
+</html>
