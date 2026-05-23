@@ -13,30 +13,48 @@
 
 <div class="main-container">
 
+  
 <!-- TITLE OF PAGE-->
-
 <h1>CRAAP Tester</h1>
 
-<!-- YOUR TOPIC -->
+
+  
+<!-- CONTAINER ONE -->
 <div class="container">
   <h2>Your Topic</h2>
 
+ <!-- KEYWORDS -->
   <div class="row">
     <label>Keywords</label>
     <input type="text">
   </div>
 
+  <!-- SYNONYMS -->
   <div class="row">
     <label>Keyword Synonyms</label>
     <input type="text">
   </div>
 
-  <div id="topicField"></div>
+  <!-- TOPIC FIELD -->
+  <div class="row">
+    <label>Field</label>
+    <select>
+      <option>Select Field</option>
+      <option>Health & Medical Sciences</option>
+      <option>Physical Sciences (Physics, Chemistry)</option>
+      <option>Engineering & Technology (Computer Science)</option>
+      <option>Social Sciences (Psychology, Economics, Political Science, Anthropology)</option>
+      <option>Humanities (History, Philosophy, Literature, Religion)</option>
+      <option>Other</option>
+    </select>
+  </div>
 
-<!-- YOUR ARICLE -->
+  
+<!-- CONTAINER TWO -->
 <div class="container">
   <h2>Article</h2>
 
+  <!-- PUBLICATION DATE -->
   <div class="row date-row">
     <label>Publication Date</label>
     <input type="date" id="pubDate">
@@ -45,11 +63,14 @@
     </label>
   </div>
 
+  <!-- PUBLISHER NAME -->
+
   <div class="row">
   <label>Publisher Name</label>
   <input type="text" class="publisher-input">
   </div>
 
+  <!-- PUBLISHER TYPE -->
   <div class="row">
   <label>Publication Type</label>
   <select>
@@ -83,7 +104,6 @@
   
 <div class="row full">
   <label>Quality check:</label>
-
   <div class="checkbox-group">
     <label><input type="checkbox"> Advertising present</label>
     <label><input type="checkbox"> Sponsored content</label>
@@ -92,6 +112,7 @@
     <label><input type="checkbox"> One-sided argument</label>
   </div>
 </div>
+  
 <!-- AUTHORS -->
   <div id="authors"></div>
 
@@ -115,23 +136,6 @@
 
   <!-- FUNCTIONS -->
 
-<script>
-function fieldRow() {
-  return `
-  <div class="row">
-    <label>Field</label>
-    <select>
-      <option>Select Field</option>
-      <option>Health & Medical Sciences</option>
-      <option>Physical Sciences (Physics, Chemistry)</option>
-      <option>Engineering & Technology (Computer Science)</option>
-      <option>Social Sciences (Psychology, Economics, Political Science, Anthropology)</option>
-      <option>Humanities (History, Philosophy, Literature, Religion)</option>
-      <option>Other</option>
-    </select>
-  </div>
-  `;
-}
 
 let authorCount = 0;
 
