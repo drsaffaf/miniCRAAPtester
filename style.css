@@ -183,7 +183,7 @@ option {
   width: 100%;
 }
 
-.checkbox-group label {
-  display: block;
-  margin: 5px 0;
+.checkbox-group {
+  padding-left: 10px;
+  border-left: 2px solid rgba(148,163,184,0.3);
 }
