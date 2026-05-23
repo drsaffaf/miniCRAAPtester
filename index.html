@@ -31,19 +31,7 @@
     <input type="text">
   </div>
 
-  <div class="row">
-    <label>Field</label>
-    <select>
-    <option>Select Field</option>
-    <option>Health & Medical Sciences</option>
-    <option>Physical Sciences (Physics, Chemistry)</option>
-    <option>Engineering & Technology (Computer Science)</option>
-    <option>Social Sciences (Psychology, Economics, Political Science, Anthropology)</option>
-    <option>Humanities (History, Philosophy, Literature, Religion)</option>
-    <option>Other</option>
-    </select>
-  </div>
-</div>
+  <div id="topicField"></div>
 
 <!-- YOUR ARICLE -->
 <div class="container">
@@ -125,30 +113,24 @@
 </div>
 
 <script>
-let authorCount = 0;
-
-function fieldDropdown() {
+function fieldRow() {
   return `
+  <div class="row">
+    <label>Field</label>
     <select>
-      <option>Field of Degree</option>
-      <optgroup label="STEM Fields">
-        <option>Medical & Health Sciences</option>
-        <option>Physics</option>
-        <option>Engineering</option>
-        <option>Computer Science</option>
-      </optgroup>
-      <optgroup label="Social Sciences">
-        <option>Psychology</option>
-        <option>Anthropology</option>
-        <option>Economics</option>
-        <option>Political Science</option>
-      </optgroup>
-      <optgroup label="Humanities">
-        <option>History, Philosophy, Literature, or Religious Writings</option>
-      </optgroup>
+      <option>Select Field</option>
+      <option>Health & Medical Sciences</option>
+      <option>Physical Sciences (Physics, Chemistry)</option>
+      <option>Engineering & Technology (Computer Science)</option>
+      <option>Social Sciences (Psychology, Economics, Political Science, Anthropology)</option>
+      <option>Humanities (History, Philosophy, Literature, Religion)</option>
+      <option>Other</option>
     </select>
+  </div>
   `;
 }
+
+let authorCount = 0;
 
 function degreeDropdown() {
   return `
@@ -163,15 +145,6 @@ function degreeDropdown() {
   `;
 }
 
-function validationDropdown() {
-  return `
-    <select>
-      <option>Validation</option>
-      <option>Degree validated at .edu/.gov</option>
-      <option>Degree not validated</option>
-    </select>
-  `;
-}
 
 function addAuthor() {
   authorCount++;
