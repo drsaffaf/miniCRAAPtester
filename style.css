@@ -145,7 +145,7 @@ select:hover {
 /* ✅ AUTHOR GRID */
 .author-row {
   display: grid;
-  grid-template-columns: 160px 1fr 140px 180px 180px;
+  grid-template-columns: 140px 1fr 160px 180px;
   gap: 10px;
   margin-bottom: 10px;
 }
