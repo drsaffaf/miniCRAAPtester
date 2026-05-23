@@ -116,9 +116,11 @@
     <option>Select the Evidence Provided</option>
     <option>Full citations/links provided</option>
     <option>Some citations/ links provided</option>
+    <option>One citation/ link provided</option>
     <option>No citations/ links provided</option>
     </select>
   </div>
+
 
   
   <label>Additional Information (select all that apply):</label>
@@ -226,4 +228,136 @@ function removeAuthor() {
 /* START WITH ONE AUTHOR */
 addAuthor();
 
+
+function runCRAAP() {
+
+  /* ========= GET VALUES ========= */
+
+  // FIELD (Topic)
+  const topicField = document.querySelectorAll('select')[0].value;
+
+  // KEYWORDS
+  const keywords = document.querySelectorAll('input[type="text"]')[0].value.toLowerCase().split(',');
+  const synonyms = document.querySelectorAll('input[type="text"]')[1].value.toLowerCase().split(',');
+
+  // TEXT
+  const text = document.querySelector('textarea').value.toLowerCase();
+
+  // FIELD OF PUBLICATION
+  const sourceField = document.querySelectorAll('select')[3].value;
+
+  // EVIDENCE
+  const evidence = document.querySelectorAll('select')[4].value;
+
+  // ADDITIONAL CHECKBOXES
+  const checks = document.querySelectorAll('.checkbox-group input:checked');
+
+  // AUTHORS
+  const authorRows = document.querySelectorAll('.author-row');
+
+
+  /* ========= 1. CURRENCY ========= */
+
+  let currency = 3;
+
+  if (topicField.includes("Health") || topicField.includes("Technology")) {
+    currency = 5;
+  } else if (topicField.includes("Sciences")) {
+    currency = 4;
+  } else {
+    currency = 3;
+  }
+
+
+  /* ========= 2. RELEVANCE ========= */
+
+  let matchCount = 0;
+  let allTerms = [...keywords, ...synonyms];
+
+  allTerms.forEach(term => {
+    if (term.trim() && text.includes(term.trim())) {
+      matchCount++;
+    }
+  });
+
+  let relevance = Math.min(5, matchCount);
+
+
+  /* ========= 3. AUTHORITY ========= */
+
+  let authority = 0;
+
+  authorRows.forEach(row => {
+    const selects = row.querySelectorAll('select');
+
+    let degree = selects[0].value;
+    let field = selects[1].value;
+
+    if (field === sourceField) {
+      authority += 2;
+    }
+
+    // Degree logic
+    if (sourceField.includes("Health") && degree.includes("Doctorate")) {
+      authority += 3;
+    } 
+    else if (sourceField.includes("Journalism") && degree.includes("Bachelors")) {
+      authority += 2;
+    } 
+    else if (degree.includes("Masters")) {
+      authority += 2;
+    }
+  });
+
+  authority = Math.min(5, authority);
+
+
+  /* ========= 4. PURPOSE ========= */
+
+  let purpose = 5 - checks.length;
+
+  if (purpose < 1) purpose = 1;
+
+
+  /* ========= 5. ACCURACY ========= */
+
+  let accuracy = 3;
+
+  if (evidence.includes("Strong")) accuracy = 5;
+  else if (evidence.includes("Moderate")) accuracy = 4;
+  else if (evidence.includes("Limited")) accuracy = 2;
+  else if (evidence.includes("None")) accuracy = 1;
+
+
+  /* ========= TOTAL ========= */
+
+  let total = currency + relevance + authority + purpose + accuracy;
+
+
+  /* ========= FEEDBACK ========= */
+
+  let message = "";
+
+  if (total >= 22) {
+    message = "✅ Strong source – highly credible and relevant.";
+  } else if (total >= 16) {
+    message = "⚠️ Moderate source – use with caution.";
+  } else {
+    message = "❌ Weak source – not recommended.";
+  }
+
+
+  /* ========= OUTPUT ========= */
+
+  document.getElementById("results").innerHTML = `
+    <p><strong>Currency:</strong> ${currency}/5</p>
+    <p><strong>Relevance:</strong> ${relevance}/5</p>
+    <p><strong>Authority:</strong> ${authority}/5</p>
+    <p><strong>Purpose:</strong> ${purpose}/5</p>
+    <p><strong>Accuracy:</strong> ${accuracy}/5</p>
+    <hr>
+    <h3>Total Score: ${total} / 25</h3>
+    <p>${message}</p>
+  `;
+}
 </script>
