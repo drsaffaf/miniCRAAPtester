@@ -28,55 +28,61 @@ body {
 
 /* MAIN WIDTH */
 .main-container {
-  width: min(100%, 1300px);
+  width: min(100%, 1100px);
   margin: auto;
   padding: 3rem 1.5rem;
 }
 
 h1 {
   text-align: center;
+  margin-bottom: 30px;
 }
 
 .container {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 20px;
+  padding: 25px;
   margin-bottom: 30px;
 }
 
-/* GRID SYSTEM */
+.container h2 {
+  margin-bottom: 15px;
+}
+
+/* ✅ CLEAN 2-COLUMN FORM LAYOUT */
 .row {
   display: grid;
-  grid-template-columns: 180px 1fr auto auto auto;
-  gap: 10px;
-  align-items: center;
-  margin-bottom: 16px;
+  grid-template-columns: 180px 1fr;
+  gap: 10px 20px;
+  align-items: start;
+  margin-bottom: 18px;
 }
 
+/* ✅ FULL WIDTH ROW (checkbox sections, text areas) */
 .row.full {
-  display: flex;
-  flex-direction: column;
+  display: block;
 }
 
-/* AUTHOR GRID */
-.author-row {
-  display: grid;
-  grid-template-columns: 180px 1fr 200px 220px 220px;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
+/* ✅ LABELS */
 label {
   color: var(--soft);
+  padding-top: 6px;
 }
 
+/* ✅ FULL ROW LABELS */
+.row.full > label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* ✅ FORM INPUTS */
 input, select, textarea {
   background: rgba(255,255,255,0.06);
   border: 1px solid var(--border);
   color: var(--text);
-  padding: 6px;
-  border-radius: 6px;
+  padding: 8px;
+  border-radius: 8px;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -85,62 +91,23 @@ input:focus, select:focus, textarea:focus {
   box-shadow: 0 0 5px var(--accent);
 }
 
-input[type="text"], select {
+input[type="text"], select, textarea {
   width: 100%;
 }
 
-.publisher-input {
-  grid-column: span 1;
-}
-
+/* ✅ TEXTAREA */
 textarea {
-  width: 100%;
   height: 160px;
+  resize: vertical;
 }
 
-/* BUTTONS */
-button {
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text);
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-button:hover {
-  border-color: var(--accent);
-  box-shadow: 0 0 10px rgba(56,189,248,0.3);
-}
-
-/* CHECKBOX LABEL */
-.checkbox-label {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.author-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-.author-buttons button {
-  width: 140px;
-}
-
+/* ✅ SELECT DROPDOWN STYLE */
 select {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
 
-  background: rgba(255,255,255,0.06);
-  color: var(--text);
-  border: 1px solid var(--border);
-
   padding: 10px 35px 10px 10px;
-  border-radius: 8px;
 
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='white'%3E%3Cpath d='M5 7l5 6 5-6H5z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -152,20 +119,60 @@ select:hover {
   border-color: var(--accent);
 }
 
-select:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 5px var(--accent);
-}
-
-option {
-  background-color: var(--bg-2);
-  color: var(--text);
-}
-
-
+/* ✅ CHECKBOX GROUP (FIXED + CLEAN) */
 .checkbox-group {
   display: flex;
   flex-direction: column;
+  gap: 8px;
+  margin-top: 5px;
+  padding-left: 12px;
+  border-left: 2px solid rgba(148,163,184,0.25);
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ✅ INLINE CHECKBOX (date row etc.) */
+.checkbox-label {
+  display: flex;
+  align-items: center;
   gap: 6px;
+}
+
+/* ✅ AUTHOR GRID */
+.author-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 140px 180px 180px;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* ✅ BUTTONS */
+button {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(56,189,248,0.3);
+}
+
+/* ✅ AUTHOR BUTTON ALIGNMENT */
+.author-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.author-buttons button {
+  width: 140px;
 }
