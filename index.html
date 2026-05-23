@@ -24,18 +24,21 @@
   <h2>Research Topic</h2>
 
  <!-- KEYWORDS -->
+<input type="text" id="keywords">
   <div class="row">
     <label>Keywords</label>
     <input type="text">
   </div>
 
   <!-- SYNONYMS -->
+<input type="text" id="synonyms">
   <div class="row">
     <label>Keyword Synonyms</label>
     <input type="text">
   </div>
 
   <!-- TOPIC FIELD -->
+<select id="topicField">
   <div class="row">
     <label>Field</label>
     <select>
@@ -97,6 +100,7 @@
   </select>
   </div>
 
+<select id="sourceField">
   <div class="row">
     <label>Field of Publication</label>
     <select>
@@ -110,7 +114,8 @@
     </select>
   </div>
 
-    <div class="row">
+<select id="evidence">
+  <div class="row">
     <label>Evidence Provided</label>
     <select>
     <option>Select the Evidence Provided</option>
@@ -228,31 +233,31 @@ function removeAuthor() {
 /* START WITH ONE AUTHOR */
 addAuthor();
 
-
 function runCRAAP() {
 
   /* ========= GET VALUES ========= */
 
-  // FIELD (Topic)
-  const topicField = document.querySelectorAll('select')[0].value;
+  const topicField = document.getElementById('topicField').value.toLowerCase();
 
-  // KEYWORDS
-  const keywords = document.querySelectorAll('input[type="text"]')[0].value.toLowerCase().split(',');
-  const synonyms = document.querySelectorAll('input[type="text"]')[1].value.toLowerCase().split(',');
+  const keywords = document.getElementById('keywords').value
+    .toLowerCase()
+    .split(',')
+    .map(t => t.trim())
+    .filter(t => t);
 
-  // TEXT
-  const text = document.querySelector('textarea').value.toLowerCase();
+  const synonyms = document.getElementById('synonyms').value
+    .toLowerCase()
+    .split(',')
+    .map(t => t.trim())
+    .filter(t => t);
 
-  // FIELD OF PUBLICATION
-  const sourceField = document.querySelectorAll('select')[3].value;
+  const text = document.getElementById('sourceText').value.toLowerCase();
 
-  // EVIDENCE
-  const evidence = document.querySelectorAll('select')[4].value;
+  const sourceField = document.getElementById('sourceField').value.toLowerCase();
 
-  // ADDITIONAL CHECKBOXES
+  const evidence = document.getElementById('evidence').value;
+
   const checks = document.querySelectorAll('.checkbox-group input:checked');
-
-  // AUTHORS
   const authorRows = document.querySelectorAll('.author-row');
 
 
@@ -260,12 +265,11 @@ function runCRAAP() {
 
   let currency = 3;
 
-  if (topicField.includes("Health") || topicField.includes("Technology")) {
+  if (topicField.includes("health") || topicField.includes("technology")) {
     currency = 5;
-  } else if (topicField.includes("Sciences")) {
+  } 
+  else if (topicField.includes("science")) {
     currency = 4;
-  } else {
-    currency = 3;
   }
 
 
@@ -275,7 +279,7 @@ function runCRAAP() {
   let allTerms = [...keywords, ...synonyms];
 
   allTerms.forEach(term => {
-    if (term.trim() && text.includes(term.trim())) {
+    if (text.includes(term)) {
       matchCount++;
     }
   });
@@ -291,17 +295,16 @@ function runCRAAP() {
     const selects = row.querySelectorAll('select');
 
     let degree = selects[0].value;
-    let field = selects[1].value;
+    let field = selects[1].value.toLowerCase();
 
     if (field === sourceField) {
       authority += 2;
     }
 
-    // Degree logic
-    if (sourceField.includes("Health") && degree.includes("Doctorate")) {
+    if (sourceField.includes("health") && degree.includes("Doctorate")) {
       authority += 3;
     } 
-    else if (sourceField.includes("Journalism") && degree.includes("Bachelors")) {
+    else if (sourceField.includes("journalism") && degree.includes("Bachelors")) {
       authority += 2;
     } 
     else if (degree.includes("Masters")) {
@@ -315,7 +318,6 @@ function runCRAAP() {
   /* ========= 4. PURPOSE ========= */
 
   let purpose = 5 - checks.length;
-
   if (purpose < 1) purpose = 1;
 
 
@@ -323,10 +325,10 @@ function runCRAAP() {
 
   let accuracy = 3;
 
-  if (evidence.includes("Strong")) accuracy = 5;
-  else if (evidence.includes("Moderate")) accuracy = 4;
-  else if (evidence.includes("Limited")) accuracy = 2;
-  else if (evidence.includes("None")) accuracy = 1;
+  if (evidence.includes("Full")) accuracy = 5;
+  else if (evidence.includes("Some")) accuracy = 4;
+  else if (evidence.includes("One")) accuracy = 2;
+  else if (evidence.includes("No")) accuracy = 1;
 
 
   /* ========= TOTAL ========= */
@@ -342,7 +344,7 @@ function runCRAAP() {
     message = "✅ Strong source – highly credible and relevant.";
   } else if (total >= 16) {
     message = "⚠️ Moderate source – use with caution.";
-  } else {
+    } else {
     message = "❌ Weak source – not recommended.";
   }
 
@@ -360,4 +362,5 @@ function runCRAAP() {
     <p>${message}</p>
   `;
 }
+
 </script>
