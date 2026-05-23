@@ -8,39 +8,80 @@
 <style>
 body {
   font-family: Arial, sans-serif;
+  background: #eef3f8;
+  margin: 0;
   padding: 20px;
-  background: #f4f4f4;
 }
 
 .container {
-  max-width: 700px;
+  max-width: 800px;
   margin: auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-h2 {
+h1 {
   text-align: center;
+  color: #333;
 }
 
-.question {
-  margin-bottom: 20px;
+.section {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #fafafa;
+}
+
+.section h3 {
+  margin: 0 0 5px;
+  color: #0078d4;
+}
+
+.section p {
+  margin: 5px 0 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
 button {
-  padding: 10px 15px;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
   border: none;
   background: #0078d4;
   color: white;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+}
+
+button:hover {
+  background: #005fa3;
 }
 
 .result {
   margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  background: #f1f6fb;
   font-weight: bold;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
 }
 </style>
 </head>
@@ -48,32 +89,79 @@ button {
 <body>
 
 <div class="container">
-  <h2>CRAAP Test Evaluator</h2>
-  <p>Rate each category from 1 (poor) to 5 (excellent).</p>
+  <h1>CRAAP Test Evaluator</h1>
 
-  <div class="question">
-    <label>Currency - Is it up to date?</label><br>
-    <input type="number" min="1" max="5" id="currency">
+  <label><strong>Your Research Question:</strong></label>
+  <textarea placeholder="Type your research question here..."></textarea>
+
+  <label><strong>Source URL (optional):</strong></label>
+  <textarea placeholder="Paste the link to your source here..."></textarea>
+
+  <p><strong>Rate each category:</strong></p>
+
+  <div class="section">
+    <h3>Currency</h3>
+    <p><strong>Key Question:</strong> Is it up to date?<br>Recent information is more useful, especially in fast-changing areas.</p>
+    <select id="currency">
+      <option value="0">Select rating</option>
+      <option value="1">1 - Very outdated</option>
+      <option value="2">2 - Somewhat outdated</option>
+      <option value="3">3 - Acceptable</option>
+      <option value="4">4 - Mostly current</option>
+      <option value="5">5 - Very current</option>
+    </select>
   </div>
 
-  <div class="question">
-    <label>Relevance - Does it apply to my decision?</label><br>
-    <input type="number" min="1" max="5" id="relevance">
+  <div class="section">
+    <h3>Relevance</h3>
+    <p><strong>Key Question:</strong> Does it apply to my decision?<br>Evidence must directly address your specific question.</p>
+    <select id="relevance">
+      <option value="0">Select rating</option>
+      <option value="1">1 - Not relevant</option>
+      <option value="2">2 - Slightly relevant</option>
+      <option value="3">3 - Moderately relevant</option>
+      <option value="4">4 - Mostly relevant</option>
+      <option value="5">5 - Highly relevant</option>
+    </select>
   </div>
 
-  <div class="question">
-    <label>Authority - Who created it?</label><br>
-    <input type="number" min="1" max="5" id="authority">
+  <div class="section">
+    <h3>Authority</h3>
+    <p><strong>Key Question:</strong> Who created it?<br>Sources should have proper expertise or credentials.</p>
+    <select id="authority">
+      <option value="0">Select rating</option>
+      <option value="1">1 - No authority</option>
+      <option value="2">2 - Limited authority</option>
+      <option value="3">3 - Some authority</option>
+      <option value="4">4 - Credible authority</option>
+      <option value="5">5 - Highly authoritative</option>
+    </select>
   </div>
 
-  <div class="question">
-    <label>Accuracy - Is it reliable?</label><br>
-    <input type="number" min="1" max="5" id="accuracy">
+  <div class="section">
+    <h3>Accuracy</h3>
+    <p><strong>Key Question:</strong> Is it reliable?<br>Information should be supported by evidence and consistent across sources.</p>
+    <select id="accuracy">
+      <option value="0">Select rating</option>
+      <option value="1">1 - Not reliable</option>
+      <option value="2">2 - Questionable</option>
+      <option value="3">3 - Somewhat reliable</option>
+      <option value="4">4 - Reliable</option>
+      <option value="5">5 - Highly reliable</option>
+    </select>
   </div>
 
-  <div class="question">
-    <label>Purpose - Why was it created?</label><br>
-    <input type="number" min="1" max="5" id="purpose">
+  <div class="section">
+    <h3>Purpose</h3>
+    <p><strong>Key Question:</strong> Why was it created?<br>Be aware of bias, intent, and possible agendas.</p>
+    <select id="purpose">
+      <option value="0">Select rating</option>
+      <option value="1">1 - Strong bias</option>
+      <option value="2">2 - Some bias</option>
+      <option value="3">3 - Neutral</option>
+      <option value="4">4 - Mostly objective</option>
+      <option value="5">5 - Completely objective</option>
+    </select>
   </div>
 
   <button onclick="calculateScore()">Evaluate Source</button>
@@ -83,25 +171,24 @@ button {
 
 <script>
 function calculateScore() {
-  let currency = +document.getElementById('currency').value || 0;
-  let relevance = +document.getElementById('relevance').value || 0;
-  let authority = +document.getElementById('authority').value || 0;
-  let accuracy = +document.getElementById('accuracy').value || 0;
-  let purpose = +document.getElementById('purpose').value || 0;
+  let currency = +document.getElementById('currency').value;
+  let relevance = +document.getElementById('relevance').value;
+  let authority = +document.getElementById('authority').value;
+  let accuracy = +document.getElementById('accuracy').value;
+  let purpose = +document.getElementById('purpose').value;
 
   let total = currency + relevance + authority + accuracy + purpose;
   let message = '';
 
   if (total >= 20) {
-    message = '✅ Strong source – highly reliable and relevant.';
+    message = '✅ Strong source: This source is highly reliable and matches your research question well.';
   } else if (total >= 15) {
-    message = '⚠️ Decent source – use with some caution.';
+    message = '⚠️ Decent source: This source could be useful but should be verified or supplemented.';
   } else {
-    message = '❌ Weak source – consider finding a better one.';
+    message = '❌ Weak source: This source may not be suitable for your research question.';
   }
 
-  document.getElementById('result').innerText =
-    'Total Score: ' + total + '/25\n' + message;
+  document.getElementById('result').innerText = 'Total Score: ' + total + '/25\n' + message;
 }
 </script>
 
