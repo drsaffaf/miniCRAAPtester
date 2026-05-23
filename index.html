@@ -48,6 +48,9 @@
       <option>Other</option>
     </select>
   </div>
+  
+</div>
+<!-- END OF CONTAINER ONE-->
 
   
 <!-- CONTAINER TWO -->
@@ -103,7 +106,7 @@
 
   
 <div class="row full">
-  <label>Quality check:</label>
+  <label>Select all that apply:</label>
   <div class="checkbox-group">
     <label><input type="checkbox"> Advertising present</label>
     <label><input type="checkbox"> Sponsored content</label>
@@ -111,7 +114,6 @@
     <label><input type="checkbox"> Emotional or persuasive language</label>
     <label><input type="checkbox"> One-sided argument</label>
   </div>
-</div>
   
 <!-- AUTHORS -->
   <div id="authors"></div>
@@ -132,59 +134,3 @@
 </div>
 
 </div>
-
-
-  <!-- FUNCTIONS -->
-
-
-let authorCount = 0;
-
-function degreeDropdown() {
-  return `
-    <select>
-      <option>Highest Degree Earned</option>
-      <option>PhD</option>
-      <option>Masters</option>
-      <option>Bachelors</option>
-      <option>High School</option>
-      <option>No degree listed</option>
-    </select>
-  `;
-}
-
-
-function addAuthor() {
-  authorCount++;
-
-  const div = document.createElement('div');
-  div.className = 'author-row';
-
-  div.innerHTML = `
-    <label>Author ${authorCount}</label>
-    <input type="text" placeholder="Name">
-    ${degreeDropdown()}
-    ${fieldDropdown()}
-    ${validationDropdown()}
-  `;
-
-  document.getElementById('authors').appendChild(div);
-}
-
-function removeAuthor() {
-  const container = document.getElementById('authors');
-  if (container.children.length > 0) {
-    container.removeChild(container.lastChild);
-    authorCount--;
-  }
-}
-
-function toggleDate() {
-  const dateInput = document.getElementById('pubDate');
-  dateInput.disabled = !dateInput.disabled;
-}
-
-addAuthor();
-</script>
-
-</body>
-</html>
